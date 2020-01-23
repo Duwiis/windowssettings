@@ -1,0 +1,6 @@
+<svg>
+  <rect id="background" />
+
+  <rect id="testObj" width="186" height="116" x="58" y="93" fill="black" />
+
+</svg>
