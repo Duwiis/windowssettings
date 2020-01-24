@@ -1,69 +1,39 @@
 const colorSet = [
-  {color: "black"},
-  {color: "darkslategrey"},
-  {color: "dimgrey"},
-  {color: "grey"},
-  {color: "lightgrey"},
-  {color: "beige"},
-  {color: "white"},
-  {color: "maroon"},
-  {color: "saddlebrown"},
-  {color: "darkgoldenrod"},
-  {color: "goldenrod"},
-  {color: "rosybrown"},
-  {color: "wheat"},
-  {color: "navy"},
-  {color: "blue"},
-  {color: "dodgerblue"},
-  {color: "deepskyblue"},
-  {color: "aquamarine"},
-  {color: "cyan"},
-  {color: "olive"},
-  {color: "darkgreen"},
-  {color: "green"},
-  {color: "springgreen"},
-  {color: "limegreen"},
-  {color: "palegreen"},
-  {color: "lime"},
-  {color: "greenyellow"},
-  {color: "darkslateblue"},
-  {color: "slateblue"},
-  {color: "purple"},
-  {color: "fuchsia"},
-  {color: "plum"},
-  {color: "orchid"},
-  {color: "lavender"},
-  {color: "darkkhaki"},
-  {color: "khaki"},
-  {color: "lemonchiffon"},
-  {color: "yellow"},
-  {color: "gold"},
-  {color: "orangered"},
-  {color: "orange"},
-  {color: "coral"},
-  {color: "lightpink"},
-  {color: "palevioletred"},
-  {color: "deeppink"},
-  {color: "darkred"},
-  {color: "crimson"},
-  {color: "red"}       
+  { color: "red" },
+  { color: "green" },
+  { color: "blue" }
 ];
 
 const options = [
   ['Background Color', 'colorBackground']
 ];
 
+// openCheck is set to true by companion if peersocket is open. Set in sendSettingsData()
+// companionCheck is set to true if the companion is responding to settings. Set on companion launch
+// if companion is NOT responding, user will be able to toggle both checks between false and true
 function mySettings(props) {
   return (
     <Page>
-      {options.map(([title, settingsKey]) =>
-        <Section
-          title={title}>
-          <ColorSelect
-            settingsKey={settingsKey}
-            colors={colorSet} />
-        </Section>
-      )}
+      <Section
+        title={<Text bold align="center">Connection Check</Text>}>
+        <Toggle
+          settingsKey="openCheck"
+          label="Check for open connection"
+        />
+      </Section>
+      <Section
+        title={<Text bold align="center">Companion Check</Text>}>
+        <Toggle
+          settingsKey="companionCheck"
+          label="Check for companion"
+        />
+      </Section>
+      <Section
+        title='Background Color'>
+        <ColorSelect
+          settingsKey='colorBackground'
+          colors={colorSet} />
+      </Section>
     </Page>
   );
 }

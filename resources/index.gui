@@ -2,5 +2,6 @@
   <rect id="background" />
 
   <rect id="testObj" width="186" height="116" x="58" y="93" fill="black" />
+  <rect id="errorObj" width="93" height="58" x="20" y="20" fill="black" />
 
 </svg>
