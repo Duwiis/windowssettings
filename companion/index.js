@@ -1,6 +1,7 @@
-import { me } from "companion";
+import { me as companion } from "companion";
 import * as messaging from "messaging";
 import { settingsStorage } from "settings";
+
 
 
 console.log("companion running")
@@ -57,3 +58,22 @@ function sendSettingData(data) {
 }
 
 initialize();
+
+//trying to wake the companion 
+const MILLISECONDS_PER_MINUTE = 1000 * 60;
+
+if (!companion.permissions.granted("run_background")) {
+  console.warn("We're not allowed to access to run in the background!");
+}
+
+
+companion.wakeInterval = 5 * MILLISECONDS_PER_MINUTE;
+
+if (companion.launchReasons.settingsChanged) {
+  initialize();
+}
+
+if (companion.launchReasons.peerAppLaunched) {
+  initialize();
+}
+
